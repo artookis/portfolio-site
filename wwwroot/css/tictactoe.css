@@ -1,0 +1,30 @@
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 140px));
+    gap: 8px;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.cell {
+    background: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 12px;
+    padding: 18px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #14233d;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(31, 41, 90, 0.06);
+}
+
+.cell:hover {
+    background: #eef2ff;
+}
+
+#status {
+    margin-top: 14px;
+    font-size: 1rem;
+    color: #283b63;
+    font-weight: 800;
+}

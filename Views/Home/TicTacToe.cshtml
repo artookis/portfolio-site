@@ -1,0 +1,27 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section container" id="game-section">
+    <h2>Tic Tac Toe</h2>
+    <p>A simple web game. Tap any empty square to place your mark. The first player to get three in a row wins.</p>
+
+    <div id="game">
+        <div id="board"></div>
+    </div>
+
+    <div class="tictactoe-actions">
+        <a class="btn" href="#" id="newGameLink">New Game</a>
+    </div>
+
+    <div id="status" class="tictactoe-status"></div>
+</div>
+
+<link rel="stylesheet" href="~/css/tictactoe.css" />
+<script src="~/js/tictactoe.js"></script>
+<script>
+    document.getElementById('newGameLink').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.newGame && window.newGame();
+    });
+</script>

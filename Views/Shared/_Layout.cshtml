@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artookis — IT Portfolio</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Artookis</h1>
+            <p>IT Professional. Software Developer. Problem Solver.</p>
+        </div>
+    </header>
+
+    <nav class="site-nav">
+        <div class="container">
+            <a href="~/Home/About">About</a>
+            <a href="~/Home/Projects">Projects</a>
+            <a href="~/Home/Skills">Skills</a>
+            <a href="~/Home/TicTacToe">Game</a>
+            <a href="~/Home/Contact">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; @DateTime.UtcNow.Year Artookis. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
