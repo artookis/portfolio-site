@@ -24,3 +24,4 @@
 /home/artookis/csharp-site/obj/Debug/net8.0/csharp-site.pdb
 /home/artookis/csharp-site/obj/Debug/net8.0/csharp-site.genruntimeconfig.cache
 /home/artookis/csharp-site/obj/Debug/net8.0/ref/csharp-site.dll
+/home/artookis/csharp-site/obj/Debug/net8.0/csharp-site.sourcelink.json

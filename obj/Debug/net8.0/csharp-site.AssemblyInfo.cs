@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("csharp-site")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab67567285f69913870d3182cea517d63f413883")]
 [assembly: System.Reflection.AssemblyProductAttribute("csharp-site")]
 [assembly: System.Reflection.AssemblyTitleAttribute("csharp-site")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

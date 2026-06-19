@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/home/artookis/csharp-site/wwwroot/css/stickers.css",
+      "PackagePath": "staticwebassets/css/stickers.css"
+    },
+    {
       "Id": "/home/artookis/csharp-site/wwwroot/css/tictactoe.css",
       "PackagePath": "staticwebassets/css/tictactoe.css"
     },
@@ -15,6 +19,34 @@
     {
       "Id": "/home/artookis/csharp-site/wwwroot/portfolio.html",
       "PackagePath": "staticwebassets/portfolio.html"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/blink.png",
+      "PackagePath": "staticwebassets/stickers/blink.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/nofx.png",
+      "PackagePath": "staticwebassets/stickers/nofx.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/powell.png",
+      "PackagePath": "staticwebassets/stickers/powell.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/punk.png",
+      "PackagePath": "staticwebassets/stickers/punk.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/skate.png",
+      "PackagePath": "staticwebassets/stickers/skate.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/thrash.png",
+      "PackagePath": "staticwebassets/stickers/thrash.png"
+    },
+    {
+      "Id": "/home/artookis/csharp-site/wwwroot/stickers/vans.png",
+      "PackagePath": "staticwebassets/stickers/vans.png"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.csharp-site.props",
