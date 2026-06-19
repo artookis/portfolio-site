@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artookis — IT Portfolio</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@5.0.8/index.min.css" />
   <style>
     * {
       box-sizing: border-box;
@@ -12,18 +11,21 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #0a0a0a;
-      background-image:
-        linear-gradient(rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.65)),
-        url('https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickerbg/bg.png');
-      background-repeat: repeat;
-      background-size: auto;
-      background-attachment: fixed;
+      background: #050505;
       color: #f5f5f5;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
       line-height: 1.6;
       min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 60, 60, 0.18) 0px, transparent 260px),
+        radial-gradient(circle at 80% 20%, rgba(40, 220, 120, 0.18) 0px, transparent 260px),
+        radial-gradient(circle at 50% 80%, rgba(255, 220, 40, 0.18) 0px, transparent 260px),
+        linear-gradient(135deg, #1b1024 0%, #0a1628 100%);
     }
 
     a {
@@ -36,104 +38,126 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 20px;
       position: relative;
       z-index: 2;
     }
 
-    .site-header {
-      background: rgba(15, 10, 25, 0.85);
-      border-bottom: 4px solid #ff5f7a;
-      padding: 36px 0;
-      position: relative;
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 10, 15, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
     }
 
     .site-header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 1.6rem;
       letter-spacing: 2px;
+      font-weight: 800;
     }
 
     .site-header p {
       color: #ffe08a;
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       font-weight: 700;
     }
 
-    .site-nav {
-      background: rgba(10, 10, 25, 0.85);
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 2px dashed #2be0a0;
+    nav.site-nav a {
+      color: #ffffff;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
     }
 
-    .site-nav a {
-      color: #ffffff;
-      padding: 10px 14px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    nav.site-nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      text-decoration: none;
     }
 
     .section {
-      padding: 36px 0;
+      padding: 100px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 18px;
+      font-size: 1.8rem;
+      margin-bottom: 22px;
       color: #ffe08a;
-      font-weight: 900;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
     }
 
     .section p {
       margin-bottom: 14px;
-      color: #f5f5f5;
+      color: #f0f0f5;
     }
 
     .project-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 2px solid #ffffff;
-      border-radius: 16px;
-      padding: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 24px;
       margin-bottom: 18px;
-      box-shadow: 6px 6px 0 #ff5f7a;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
     }
 
     .project-card h3 {
       margin-bottom: 8px;
       color: #ffe08a;
-      font-weight: 900;
+      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
     }
 
     .skill-group {
-      background: rgba(255, 255, 255, 0.06);
-      border: 2px solid #ffffff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 4px 4px 0 #2be0a0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 22px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.35);
     }
 
     .skill-group h3 {
       font-size: 1.05rem;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       color: #ffe08a;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-weight: 900;
+      font-weight: 800;
     }
 
     .skill-group ul {
@@ -147,17 +171,23 @@
       color: #ffffff;
       font-weight: 700;
       padding: 10px 12px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      border: 1.5px dashed #ffffff;
+      border: 1px dashed rgba(255,255,255,0.25);
     }
 
     .contact-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 2px solid #ffffff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      box-shadow: 6px 6px 0 #4d7cff;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 28px 26px;
+      max-width: 520px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
     .btn {
@@ -166,23 +196,25 @@
       color: #fff;
       padding: 12px 18px;
       border-radius: 12px;
-      font-weight: 900;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 2px solid #ffffff;
+      letter-spacing: 0.8px;
+      border: 1.5px solid rgba(255,255,255,0.9);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .btn:hover {
       background: #ff4060;
       text-decoration: none;
+      transform: translateY(-1px);
     }
 
     .site-footer {
-      background: rgba(10, 10, 25, 0.9);
-      color: #c6c6d1;
-      padding: 20px 0;
-      font-size: 0.95rem;
-      border-top: 3px solid #2be0a0;
+      background: rgba(5, 5, 8, 0.9);
+      color: #a0a0b8;
+      padding: 24px 0;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .tictactoe-actions {
@@ -198,32 +230,10 @@
       color: #ffffff;
     }
 
-    .sticker-wall {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 14px;
-    }
-
-    .sticker {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.35));
-      transform: rotate(-6deg);
-      transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
-    }
-
-    .sticker:hover {
-      transform: rotate(0deg) scale(1.1);
-      filter: drop-shadow(4px 4px 0 rgba(255, 95, 122, 0.45));
-    }
-
     #board {
       display: grid;
-      grid-template-columns: repeat(3, minmax(100px, 140px));
-      gap: 8px;
+      grid-template-columns: repeat(3, minmax(100px, 130px));
+      gap: 10px;
       justify-content: center;
       margin-top: 14px;
     }
@@ -231,54 +241,69 @@
     .cell {
       background: #ffffff;
       border: 1px solid #dde3f0;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 18px;
       font-size: 1.6rem;
       font-weight: 800;
       color: #14233d;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(31, 41, 90, 0.06);
+      box-shadow: 0 2px 6px rgba(31,41,90,0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cell:hover {
-      background: #eef2ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(31,41,90,0.25);
     }
 
-    #status {
-      margin-top: 14px;
-      font-size: 1rem;
-      color: #ffffff;
-      font-weight: 800;
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .site-header h1 {
+        font-size: 1.35rem;
+      }
+      .section {
+        padding: 60px 0;
+      }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>Artookis</h1>
-      <p>IT Professional. Developer. Skateboarder. Guitar. Punk Rock.</p>
+    <div class="container header-inner">
+      <div>
+        <h1>Artookis</h1>
+        <p>IT Professional. Developer. Skateboarder. Guitar. Punk Rock.</p>
+      </div>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#game">Game</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <nav class="site-nav">
-    <div class="container">
-      <a href="./#about">About</a>
-      <a href="./#projects">Projects</a>
-      <a href="./#skills">Skills</a>
-      <a href="./#game">Game</a>
-      <a href="./#contact">Contact</a>
-    </div>
-  </nav>
-
   <main class="container">
-    <section id="about" class="section">
+    <section id="about" class="section reveal">
       <h2>About Me</h2>
       <p>I'm an IT professional who cares about building clean, practical software and keeping systems reliable. I like working through hard problems, shipping stable code, and learning the right tool for the job.</p>
       <p>Outside of tech, I skate, play guitar, and listen to a lot of punk rock. That energy shows up in how I work: direct, hands-on, and focused on moving forward.</p>
       <p>This site is part of that same mindset — straightforward, genuine, and made to be used.</p>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
       <h2>Projects</h2>
       <div class="project-card">
         <h3>Interview portfolio site</h3>
@@ -288,23 +313,9 @@
         <h3>Tic tac toe</h3>
         <p>A lightweight browser game that shows practical UI state handling, input validation, and deterministic game rules.</p>
       </div>
-
-      <div class="project-card">
-        <h3>Sticker Wall</h2>
-        <p>Skate. Punk. Guitar. Some things just stick.</p>
-        <div class="sticker-wall">
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/thrash.png" alt="Thrash sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/vans.png" alt="Vans sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/powell.png" alt="Powell Peralta sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/skate.png" alt="Skate sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/punk.png" alt="Punk sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/nofx.png" alt="NOFX sticker" class="sticker" />
-          <img src="https://raw.githubusercontent.com/artookis/portfolio-site/master/wwwroot/stickers/blink.png" alt="Blink sticker" class="sticker" />
-        </div>
-      </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="skills" class="section reveal">
       <h2>Skills</h2>
       <div class="skills-grid">
         <div class="skill-group">
@@ -337,7 +348,7 @@
       </div>
     </section>
 
-    <section id="game" class="section">
+    <section id="game" class="section reveal">
       <h2>Tic Tac Toe</h2>
       <p>A simple web game. Tap any empty square to place your mark. The first player to get three in a row wins.</p>
       <div id="game">
@@ -349,7 +360,7 @@
       <div id="status" class="tictactoe-status"></div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section reveal">
       <h2>Contact</h2>
       <div class="contact-card">
         <p><strong>Email:</strong> <a href="mailto:artookis@example.com">artookis@example.com</a></p>
@@ -428,6 +439,20 @@
       window.newGame = () => board.reset();
       board.render();
     })();
+
+    // Simple scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      reveals.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll, { passive: true });
+    revealOnScroll();
   </script>
 </body>
 </html>
