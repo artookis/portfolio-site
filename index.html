@@ -453,6 +453,14 @@
 
       window.newGame = () => board.reset();
       board.render();
+
+      const link = document.getElementById('newGameLink');
+      if (link) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          board.reset();
+        });
+      }
     })();
 
     const reveals = document.querySelectorAll('.reveal');
