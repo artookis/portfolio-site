@@ -33,48 +33,10 @@
       text-decoration: underline;
     }
 
-    /* Animated live galaxy background */
-    #galaxy-wrap {
-      position: fixed;
-      inset: -10%;
-      z-index: 0;
-      pointer-events: none;
-      animation: galaxyPan 90s linear infinite;
-      will-change: transform;
-    }
-
-    #galaxy-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url('/portfolio-site/wwwroot/galaxy/bg.png');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(1.05) contrast(1.05);
-    }
-
-    @keyframes galaxyPan {
-      0% { transform: rotate(0deg) scale(1.05); }
-      25% { transform: rotate(1.2deg) scale(1.08); }
-      50% { transform: rotate(-0.8deg) scale(1.1); }
-      75% { transform: rotate(0.6deg) scale(1.07); }
-      100% { transform: rotate(0deg) scale(1.05); }
-    }
-
-    #space,
-    #galaxy-wrap {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     #space {
-      z-index: 1;
-    }
-
-    #galaxy-wrap {
-      z-index: 2;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
     }
 
     .container {
@@ -367,7 +329,6 @@
   </style>
 </head>
 <body>
-  <div id="galaxy-wrap" aria-hidden="true"></div>
   <canvas id="space" aria-hidden="true"></canvas>
 
   <header class="site-header">
@@ -630,50 +591,215 @@
       window.addEventListener('DOMContentLoaded', revealNow);
     }
 
-    /* Starfield */
+    /* Galaxy background */
     (function () {
       const canvas = document.getElementById('space');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      let width, height, stars = [];
+      let width, height, center, galaxy, stars, dust, nebulae;
 
-      const resize = () => {
+      const rnd = (min = 0, max = 1) => Math.random() * (max - min) + min;
+      const clamp = (v, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, v));
+
+      const hexToRgb = (hex) => {
+        const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [255, 255, 255];
+      };
+
+      const build = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
+        center = { x: width / 2, y: height / 2 };
+        buildGalaxy();
       };
-      window.addEventListener('resize', resize);
-      resize();
 
-      const createStars = () => {
-        stars = Array.from({ length: 260 }, () => ({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 1.4 + 0.3,
-          alpha: Math.random(),
-          speed: Math.random() * 0.24 + 0.04,
-          drift: Math.random() * 0.18 - 0.09,
-        }));
+      const buildGalaxy = () => {
+        galaxy = {
+          rotation: rnd(Math.PI * 0.5, Math.PI * 1.5),
+          rotationSpeed: rnd(0.0004, 0.001) * (Math.random() > 0.5 ? 1 : -1),
+          stars: [],
+          dust: [],
+          nebulae: [],
+        };
+        const maxRadius = Math.max(width, height) * 0.9;
+        const starCount = Math.min(2200, Math.floor((width * height) / 900));
+        for (let i = 0; i < starCount; i++) {
+          const arm = Math.floor(Math.random() * 5);
+          const angle = (arm / 5) * Math.PI * 2;
+          const rNorm = Math.pow(Math.random(), 0.55);
+          const radius = rNorm * maxRadius;
+          const twist = (radius / maxRadius) * Math.PI * 2.2;
+          const jitter = (Math.random() - 0.5) * 0.8;
+          const a = angle + twist + jitter;
+          const x = Math.cos(a) * radius;
+          const y = Math.sin(a) * radius * 0.75;
+          const palette = [
+            [220, 240, 255],
+            [190, 220, 255],
+            [255, 240, 220],
+            [255, 210, 180],
+            [200, 210, 255],
+            [255, 180, 160],
+            [180, 220, 255],
+          ];
+          const color = palette[Math.floor(Math.random() * palette.length)];
+          const size = Math.random() < 0.08 ? rnd(1.4, 2.4) : rnd(0.4, 1.25);
+          const alpha = Math.random() < 0.12 ? 0.95 : rnd(0.2, 0.85);
+          galaxy.stars.push({ x, y, size, alpha, color });
+        }
+        for (let i = 0; i < 70; i++) {
+          const arm = Math.floor(Math.random() * 5);
+          const angle = (arm / 5) * Math.PI * 2;
+          const rNorm = Math.pow(Math.random(), 0.35);
+          const radius = rNorm * maxRadius;
+          const twist = (radius / maxRadius) * Math.PI * 2.2;
+          const jitter = (Math.random() - 0.5) * 0.7;
+          const a = angle + twist + jitter;
+          const x = Math.cos(a) * radius;
+          const y = Math.sin(a) * radius * 0.75;
+          galaxy.dust.push({
+            x,
+            y,
+            radius: rnd(maxRadius * 0.05, maxRadius * 0.28),
+            alpha: rnd(0.04, 0.18),
+          });
+        }
+        for (let i = 0; i < 12; i++) {
+          const arm = Math.floor(Math.random() * 5);
+          const angle = (arm / 5) * Math.PI * 2 + rnd(-0.2, 0.2);
+          const rNorm = Math.pow(Math.random(), 0.55);
+          const radius = rNorm * maxRadius;
+          const twist = (radius / maxRadius) * Math.PI * 2.2;
+          const a = angle + twist;
+          const x = Math.cos(a) * radius;
+          const y = Math.sin(a) * radius * 0.75;
+          const hue = Math.random() > 0.5 ? '#7a5cff' : '#ff9a6c';
+          const rgb = hexToRgb(hue);
+          galaxy.nebulae.push({
+            x,
+            y,
+            radius: rnd(maxRadius * 0.12, maxRadius * 0.38),
+            rgb,
+            alpha: rnd(0.08, 0.22),
+          });
+        }
       };
-      createStars();
 
-      const draw = () => {
+      const project = ({ x, y }) => ({
+        screenX: center.x + x,
+        screenY: center.y + y,
+        depth: x,
+      });
+
+      const render = (timestamp) => {
         ctx.clearRect(0, 0, width, height);
-        stars.forEach((star) => {
-          star.alpha += star.speed * 0.35;
-          if (star.alpha > 1 || star.alpha < 0.15) star.speed *= -1;
-          star.y -= 0.22;
-          star.x += star.drift;
-          if (star.y < -10) star.y = height + 10;
-          if (star.x < -10) star.x = width + 10;
-          if (star.x > width + 10) star.x = -10;
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(255,255,255,${Math.min(1, Math.max(0, star.alpha))})`;
-          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-          ctx.fill();
+        const t = timestamp || 0;
+        galaxy.rotation += galaxy.rotationSpeed;
+        const cos = Math.cos(galaxy.rotation);
+        const sin = Math.sin(galaxy.rotation);
+
+        const transform = (pt) => {
+          const rx = pt.x * cos - pt.y * sin;
+          const ry = pt.x * sin + pt.y * cos;
+          const world = project({ x: rx, y: ry });
+          return {
+            x: world.screenX,
+            y: world.screenY,
+            z: world.depth,
+          };
+        };
+
+        ctx.globalCompositeOperation = 'source-over';
+
+        galaxy.nebulae.sort((a, b) => {
+          const ax = a.x * cos - a.y * sin;
+          const bx = b.x * cos - b.y * sin;
+          return ax - bx;
         });
-        requestAnimationFrame(draw);
+        galaxy.dust.sort((a, b) => {
+          const ax = a.x * cos - a.y * sin;
+          const bx = b.x * cos - b.y * sin;
+          return ax - bx;
+        });
+        galaxy.stars.sort((a, b) => {
+          const ax = a.x * cos - a.y * sin;
+          const bx = b.x * cos - b.y * sin;
+          return ax - bx;
+        });
+
+        const drawNebula = (n) => {
+          const p = transform(n);
+          const fade = clamp(0.6 + ((p.z / Math.max(width, height)) * 0.5) * 0.5 + 0.5);
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, n.radius);
+          const [r, g, b] = n.rgb;
+          grad.addColorStop(0, `rgba(${r},${g},${b},${n.alpha * fade})`);
+          grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+          ctx.globalCompositeOperation = 'screen';
+          ctx.beginPath();
+          ctx.fillStyle = grad;
+          ctx.arc(p.x, p.y, n.radius, 0, Math.PI * 2);
+          ctx.fill();
+        };
+
+        const drawDust = (d) => {
+          const p = transform(d);
+          const fade = clamp(0.6 + ((p.z / Math.max(width, height)) * 0.5) * 0.5 + 0.5);
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, d.radius);
+          grad.addColorStop(0, `rgba(8,6,14,${d.alpha * fade})`);
+          grad.addColorStop(1, `rgba(8,6,14,0)`);
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.beginPath();
+          ctx.fillStyle = grad;
+          ctx.arc(p.x, p.y, d.radius, 0, Math.PI * 2);
+          ctx.fill();
+        };
+
+        const drawStar = (s) => {
+          const p = transform(s);
+          const fade = clamp(0.55 + ((p.z / Math.max(width, height)) * 0.5) + 0.5);
+          const alpha = s.alpha * fade;
+          if (alpha <= 0.05) return;
+          ctx.globalCompositeOperation = 'screen';
+          const rg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, s.size * 4);
+          const [r, g, b] = s.color;
+          rg.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
+          rg.addColorStop(0.6, `rgba(${r},${g},${b},${alpha * 0.35})`);
+          rg.addColorStop(1, `rgba(${r},${g},${b},0)`);
+          ctx.beginPath();
+          ctx.fillStyle = rg;
+          ctx.arc(p.x, p.y, s.size * 4, 0, Math.PI * 2);
+          ctx.fill();
+        };
+
+        const drawCore = () => {
+          ctx.globalCompositeOperation = 'screen';
+          const grad = ctx.createRadialGradient(center.x, center.y, 0, center.x, center.y, 190);
+          grad.addColorStop(0, `rgba(255,248,230,0.95)`);
+          grad.addColorStop(0.4, `rgba(255,176,120,0.55)`);
+          grad.addColorStop(0.75, `rgba(180,150,255,0.15)`);
+          grad.addColorStop(1, `rgba(0,0,0,0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(center.x, center.y, 190, 0, Math.PI * 2);
+          ctx.fill();
+        };
+
+        drawCore();
+        galaxy.nebulae.forEach(drawNebula);
+        galaxy.dust.forEach(drawDust);
+        galaxy.stars.forEach(drawStar);
+
+        requestAnimationFrame(render);
       };
-      draw();
+
+      const loop = (timestamp) => {
+        render(timestamp);
+        requestAnimationFrame(loop);
+      };
+
+      window.addEventListener('resize', build);
+      build();
+      requestAnimationFrame(loop);
     })();
   </script>
 </body>
