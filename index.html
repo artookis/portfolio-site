@@ -312,14 +312,18 @@
 
     /* Reveal on scroll */
     .reveal {
-      opacity: 0;
-      transform: translateY(36px);
-      transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1), transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.was-hidden {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none; }
     }
 
     /* Starfield */
@@ -598,18 +602,33 @@
       animate();
     })();
 
-    const reveals = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
+    const reveals = Array.from(document.querySelectorAll('.reveal'));
+    const revealNow = () => {
       const windowHeight = window.innerHeight;
       reveals.forEach((el) => {
+        el.classList.add('was-hidden');
         const rect = el.getBoundingClientRect();
-        if (rect.top < windowHeight - 100) {
-          el.classList.add('visible');
+        if (rect.top < windowHeight - 20) {
+          requestAnimationFrame(() => {
+            el.classList.remove('was-hidden');
+            el.classList.add('visible');
+          });
         }
       });
     };
-    window.addEventListener('scroll', revealOnScroll, { passive: true });
-    revealOnScroll();
+    window.addEventListener('scroll', () => {
+      reveals.forEach((el) => {
+        if (!el.classList.contains('visible') && el.getBoundingClientRect().top < window.innerHeight - 20) {
+          el.classList.remove('was-hidden');
+          el.classList.add('visible');
+        }
+      });
+    }, { passive: true });
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      revealNow();
+    } else {
+      window.addEventListener('DOMContentLoaded', revealNow);
+    }
 
     /* Starfield */
     (function () {
