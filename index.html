@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artookis — IT Portfolio</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -251,6 +252,12 @@
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
+    .diff.under { color: #2ecc71; }
+    .diff.over { color: #ff4d4d; }
+    .diff.neutral { color: #f1c40f; }
+
+    .chart-wrap { max-width: 720px; margin: 0 auto 3rem; }
+
     .tictactoe-actions {
       text-align: center;
       margin-top: 14px;
@@ -357,11 +364,12 @@
         <p>IT Professional · Developer · Skateboarder · Guitar · Punk Rock</p>
       </div>
       <nav class="site-nav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#game">Game</a>
-        <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#game">Game</a>
+          <a href="#car-tracker">Car Tracker</a>
+          <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -429,6 +437,81 @@
         <a class="btn" href="#" id="newGameLink">New Game</a>
       </div>
       <div id="status" class="tictactoe-status"></div>
+    </section>
+
+    <section id="car-tracker" class="section reveal">
+      <h2>Car Tracker</h2>
+      <p>Tracking McLarens under $100k and Miatas around $10k, plus Kelly Blue Book comparisons.</p>
+      <p><small>Searching around Houston, TX. Data refreshed by daily job.</small></p>
+
+      <h3 style="color:#ffe08a;margin-top:2.5rem;">McLarens Under $100,000</h3>
+      <div class="skills-grid">
+        <div class="project-card">
+          <h3>2012 McLaren MP4-12C Coupe</h3>
+          <p>8,505 mi · <strong style="color:#66fcf1;">$97,700</strong></p>
+          <p>KBB Fair Purchase Price: Unavailable (exotic limited data)</p>
+          <p class="diff under">▼ Conservative value listing</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-100000/" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2013 McLaren MP4-12C Base</h3>
+          <p>33,984 mi · <strong style="color:#66fcf1;">$88,999</strong></p>
+          <p>KBB Fair Purchase Price: Unavailable (exotic limited data)</p>
+          <p class="diff under">▼ Well below typical asking price</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-100000/" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2014 McLaren MP4-12C Base</h3>
+          <p>28,214 mi · <strong style="color:#66fcf1;">$99,999</strong></p>
+          <p>KBB Fair Purchase Price: Unavailable (exotic limited data)</p>
+          <p class="diff neutral">▲ At upper budget limit</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-100000/" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+      </div>
+
+      <h3 style="color:#ffe08a;margin-top:2.5rem;">Mazda Miatas Around $10,000</h3>
+      <div class="skills-grid">
+        <div class="project-card">
+          <h3>2011 Mazda MX-5 Miata Grand Touring</h3>
+          <p>149,866 mi · <strong style="color:#66fcf1;">$9,138</strong></p>
+          <p>KBB Fair Purchase Price: ~$7,175</p>
+          <p class="diff under">▼ $1,963 under KBB</p>
+          <p><a class="btn" href="https://www.cargurus.com/Cars/l-Used-Mazda-MX-5-Miata-Houston-d221_L34369" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2007 Mazda MX-5 Miata Sport</h3>
+          <p>149,715 mi · <strong style="color:#66fcf1;">$6,625</strong></p>
+          <p>KBB Fair Purchase Price: ~$8,000</p>
+          <p class="diff under">▼ $1,375 under KBB</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-15000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2001 Mazda MX-5 Miata Base</h3>
+          <p>71,464 mi · <strong style="color:#66fcf1;">$11,220</strong></p>
+          <p>KBB Fair Purchase Price: ~$6,500</p>
+          <p class="diff over">▲ $4,720 above KBB</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-15000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2002 Mazda MX-5 Miata LS</h3>
+          <p>100,877 mi · <strong style="color:#66fcf1;">$12,000</strong></p>
+          <p>KBB Fair Purchase Price: ~$6,125</p>
+          <p class="diff over">▲ $5,875 above KBB</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-15000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+        <div class="project-card">
+          <h3>2006 Mazda MX-5 Miata Sport</h3>
+          <p>85,336 mi · <strong style="color:#66fcf1;">$12,000</strong></p>
+          <p>KBB Fair Purchase Price: ~$6,400</p>
+          <p class="diff over">▲ $5,600 above KBB</p>
+          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-15000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listing</a></p>
+        </div>
+      </div>
+
+      <h3 style="color:#ffe08a;margin-top:2.5rem;">Price Comparison</h3>
+      <div class="chart-wrap" style="max-width:720px;margin:0 auto 3rem;">
+        <canvas id="priceChart"></canvas>
+      </div>
     </section>
 
     <section id="contact" class="section reveal">
@@ -591,6 +674,39 @@
       resize();
       requestAnimationFrame(render);
     })();
+
+    if (document.getElementById('priceChart')) {
+      new Chart(document.getElementById('priceChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['2012 12C','2013 12C','2014 12C','2011 Miata GT','2007 Miata Sport','2001 Miata Base','2002 Miata LS','2006 Miata Sport'],
+          datasets: [
+            { label: 'Listed Price', data: [97700,88999,99999,9138,6625,11220,12000,12000], backgroundColor: '#66fcf1' },
+            { label: 'KBB Fair Purchase Price', data: [null,null,null,7175,8000,6500,6125,6400], backgroundColor: '#45a29e' }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { labels: { color: '#c5c6c7' } },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  if (label) label += ': ';
+                  if (context.parsed.y === null) return label + 'N/A';
+                  return label + '$' + context.parsed.y.toLocaleString();
+                }
+              }
+            }
+          },
+          scales: {
+            y: { ticks: { color: '#c5c6c7', callback: v => '$' + v.toLocaleString() }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            x: { ticks: { color: '#c5c6c7' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+          }
+        }
+      });
+    }
   </script>
 </body>
 </html>
