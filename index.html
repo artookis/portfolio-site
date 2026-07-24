@@ -706,17 +706,26 @@
       reveals.forEach((el) => {
         el.classList.add('was-hidden');
         const rect = el.getBoundingClientRect();
-        if (rect.top < windowHeight - 20) {
+        if (rect.top < windowHeight * 1.25) {
           requestAnimationFrame(() => {
             el.classList.remove('was-hidden');
             el.classList.add('visible');
           });
         }
       });
+      // Safety net: reveal anything still hidden after a short delay
+      setTimeout(() => {
+        reveals.forEach((el) => {
+          if (el.classList.contains('was-hidden')) {
+            el.classList.remove('was-hidden');
+            el.classList.add('visible');
+          }
+        });
+      }, 250);
     };
     window.addEventListener('scroll', () => {
       reveals.forEach((el) => {
-        if (!el.classList.contains('visible') && el.getBoundingClientRect().top < windowHeight - 20) {
+        if (!el.classList.contains('visible') && el.getBoundingClientRect().top < window.innerHeight - 20) {
           el.classList.remove('was-hidden');
           el.classList.add('visible');
         }
