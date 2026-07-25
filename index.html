@@ -173,6 +173,43 @@
       gap: 24px;
     }
 
+    .car-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #ffffff;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .car-table thead th {
+      background: rgba(255,255,255,0.08);
+      text-align: left;
+      padding: 12px 14px;
+      font-weight: 800;
+      color: #ffe08a;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .car-table tbody td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+    }
+    .car-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .car-table a {
+      color: #66fcf1;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .car-table a:hover {
+      text-decoration: underline;
+    }
+
     .skill-group {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -445,155 +482,207 @@
       <p><small>Sources: AutoTempest, Cars.com, CarGurus. Last updated: July 2026.</small></p>
 
       <h3 style="color:#ffe08a;margin-top:2.5rem;">Ferraris Under $150,000</h3>
-      <div class="skills-grid">
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2010 Ferrari California GT Convertible</h3>
-          <p>17,064 mi · <strong style="color:#66fcf1;">$101,910</strong></p>
-          <p>Houston, TX · CarGurus</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cargurus.com/Cars/l-Used-Ferrari-Houston-m25_L34369" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2013 Ferrari California Base</h3>
-          <p>13,889 mi · <strong style="color:#66fcf1;">$104,224</strong></p>
-          <p>Houston, TX · Cars.com</p>
-          <p class="diff under">▼ Great Deal</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/ferrari/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2016 Ferrari California T Roadster</h3>
-          <p>25,031 mi · <strong style="color:#66fcf1;">$99,125</strong></p>
-          <p>Houston, TX · CarGurus</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cargurus.com/Cars/l-Used-Ferrari-Houston-m25_L34369" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2017 Ferrari California T</h3>
-          <p>16,200 mi · <strong style="color:#66fcf1;">$121,499</strong></p>
-          <p>Houston, TX · Cars.com</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/ferrari/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2018 Ferrari California T</h3>
-          <p>13,420 mi · <strong style="color:#66fcf1;">$149,900</strong></p>
-          <p>Houston, TX · Cars.com</p>
-          <p class="diff neutral">▲ At upper budget limit</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/ferrari/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
+      <div style="overflow-x:auto;">
+      <table class="car-table">
+        <thead><tr><th>Year/Model</th><th>Price</th><th>Mileage</th><th>Location/Dealer</th><th>Source</th><th>Listing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2010 Ferrari California GT Convertible</td>
+            <td><strong>$101,910</strong></td>
+            <td>17,064 mi</td>
+            <td>Houston, TX</td>
+            <td>CarGurus</td>
+            <td><a href="https://www.cargurus.com/Cars/l-Used-Ferrari-Houston-m25_L34369" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2013 Ferrari California Base</td>
+            <td><strong>$104,224</strong></td>
+            <td>13,889 mi</td>
+            <td>Houston, TX · Team Autoplex</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/e85b6c80-35fb-4589-a1a8-7f2d162c6d57/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2016 Ferrari California T Roadster</td>
+            <td><strong>$99,125</strong></td>
+            <td>25,031 mi</td>
+            <td>Houston, TX</td>
+            <td>CarGurus</td>
+            <td><a href="https://www.cargurus.com/Cars/l-Used-Ferrari-Houston-m25_L34369" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2017 Ferrari California T</td>
+            <td><strong>$121,499</strong></td>
+            <td>16,200 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/ferrari/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+          <tr>
+            <td>2018 Ferrari California T</td>
+            <td><strong>$149,900</strong></td>
+            <td>13,420 mi</td>
+            <td>Houston, TX · Ilusso Houston</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/ferrari/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+        </tbody>
+      </table>
       </div>
 
       <h3 style="color:#ffe08a;margin-top:2.5rem;">Lotus Under $150,000</h3>
-      <div class="skills-grid">
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2010 Lotus Evora 2+2</h3>
-          <p>28,794 mi · <strong style="color:#66fcf1;">$51,995</strong></p>
-          <p>Lewisville, TX · Cars.com</p>
-          <p class="diff under">▼ Well under budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/lotus/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2017 Lotus Evora 400</h3>
-          <p>13,000 mi · <strong style="color:#66fcf1;">$72,900</strong></p>
-          <p>Fort Worth, TX · Cars.com</p>
-          <p class="diff under">▼ Good Deal</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/lotus/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>1994 Lotus Esprit S4 Turbo</h3>
-          <p>44,403 mi · <strong style="color:#66fcf1;">$89,000</strong></p>
-          <p>Houston, TX · Hemmings</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.hemmings.com/classifieds/listing/1994-lotus-esprit-houston-tx-2921791" target="_blank" rel="noopener">View Listing</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2020 Lotus Evora GT</h3>
-          <p>3,029 mi · <strong style="color:#66fcf1;">$86,991</strong></p>
-          <p>Houston, TX · Cars.com</p>
-          <p class="diff under">▼ Below $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/lotus/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2025 Lotus Emira V6</h3>
-          <p>2,611 mi · <strong style="color:#66fcf1;">$99,220</strong></p>
-          <p>Dallas, TX · Cars.com</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/lotus/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
+      <div style="overflow-x:auto;">
+      <table class="car-table">
+        <thead><tr><th>Year/Model</th><th>Price</th><th>Mileage</th><th>Location/Dealer</th><th>Source</th><th>Listing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2010 Lotus Evora 2+2</td>
+            <td><strong>$51,995</strong></td>
+            <td>28,794 mi</td>
+            <td>Lewisville, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/5f16f0e4-3b21-408a-b4e2-a9c0adbff45c/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2017 Lotus Evora 400</td>
+            <td><strong>$72,900</strong></td>
+            <td>13,000 mi</td>
+            <td>Fort Worth, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/ebc46221-3a58-4148-a422-94a3c2d826ad/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>1994 Lotus Esprit S4 Turbo</td>
+            <td><strong>$89,000</strong></td>
+            <td>44,403 mi</td>
+            <td>Houston, TX</td>
+            <td>Hemmings</td>
+            <td><a href="https://www.hemmings.com/classifieds/listing/1994-lotus-esprit-houston-tx-2921791" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2020 Lotus Evora GT</td>
+            <td><strong>$86,991</strong></td>
+            <td>3,029 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/aea20d66-0d57-4cd7-b7be-e29407cb6dfd/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2020 Lotus Evora GT</td>
+            <td><strong>$89,023</strong></td>
+            <td>8,887 mi</td>
+            <td>Carrollton, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/cffc3b2b-e0f6-4362-bef2-3264803ec4df/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2025 Lotus Emira V6</td>
+            <td><strong>$99,220</strong></td>
+            <td>2,611 mi</td>
+            <td>Dallas, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/2f8fd1c8-7d1b-42cb-9dec-d04adba50eaf/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+        </tbody>
+      </table>
       </div>
 
       <h3 style="color:#ffe08a;margin-top:2.5rem;">McLarens Under $150,000</h3>
-      <div class="skills-grid">
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2013 McLaren MP4-12C Base</h3>
-          <p>33,984 mi · <strong style="color:#66fcf1;">$88,999</strong></p>
-          <p>Delray Beach, FL · Cars.com</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2012 McLaren MP4-12C Coupe</h3>
-          <p>8,505 mi · <strong style="color:#66fcf1;">$97,700</strong></p>
-          <p>Houston, TX · Cars.com</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2014 McLaren MP4-12C Base</h3>
-          <p>28,214 mi · <strong style="color:#66fcf1;">$99,999</strong></p>
-          <p>Delray Beach, FL · Cars.com</p>
-          <p class="diff under">▼ Under $150k budget</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
+      <div style="overflow-x:auto;">
+      <table class="car-table">
+        <thead><tr><th>Year/Model</th><th>Price</th><th>Mileage</th><th>Location/Dealer</th><th>Source</th><th>Listing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2013 McLaren MP4-12C Base</td>
+            <td><strong>$88,999</strong></td>
+            <td>33,984 mi</td>
+            <td>Delray Beach, FL</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+          <tr>
+            <td>2012 McLaren MP4-12C Coupe</td>
+            <td><strong>$97,700</strong></td>
+            <td>8,505 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+          <tr>
+            <td>2014 McLaren MP4-12C Base</td>
+            <td><strong>$99,999</strong></td>
+            <td>28,214 mi</td>
+            <td>Delray Beach, FL</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/mclaren/price-under-150000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+          <tr>
+            <td>2016 McLaren 570S Base</td>
+            <td><strong>$130,223</strong></td>
+            <td>23,010 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/072e510a-a38a-454c-911a-8ceaebe2a61e/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2017 McLaren 570GT Base</td>
+            <td><strong>$134,158</strong></td>
+            <td>19,624 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/cc8635ba-acdf-48e6-b01d-ed407a60e25f/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2017 McLaren 570GT Base</td>
+            <td><strong>$129,991</strong></td>
+            <td>28,754 mi</td>
+            <td>Houston, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/c8095f00-cf75-44ce-95d9-9c936f2b1e63/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+        </tbody>
+      </table>
       </div>
 
       <h3 style="color:#ffe08a;margin-top:2.5rem;">Mazda Miatas Under $10,000</h3>
-      <div class="skills-grid">
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2007 Mazda MX-5 Miata Sport</h3>
-          <p>149,715 mi · <strong style="color:#66fcf1;">$6,625</strong></p>
-          <p>Hutto, TX · Cars.com</p>
-          <p class="diff under">▼ Under $10k</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-10000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2006 Mazda MX-5 Miata Grand Touring</h3>
-          <p>88,443 mi · <strong style="color:#66fcf1;">$9,900</strong></p>
-          <p>Local area · Cars.com</p>
-          <p class="diff under">▼ Under $10k</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-10000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>2008 Mazda MX-5 Miata Grand Touring</h3>
-          <p>134,508 mi · <strong style="color:#66fcf1;">$8,995</strong></p>
-          <p>McDonough, GA · Cars.com</p>
-          <p class="diff under">▼ Under $10k</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-10000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
-        <div class="project-card">
-          <div style="height:48px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:10px;" aria-hidden="true"></div>
-          <h3>1999 Mazda MX-5 Miata Base</h3>
-          <p>91,254 mi · <strong style="color:#66fcf1;">$8,999</strong></p>
-          <p>Lawrenceville, GA · Cars.com</p>
-          <p class="diff under">▼ Under $10k</p>
-          <p><a class="btn" href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-10000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></p>
-        </div>
+      <div style="overflow-x:auto;">
+      <table class="car-table">
+        <thead><tr><th>Year/Model</th><th>Price</th><th>Mileage</th><th>Location/Dealer</th><th>Source</th><th>Listing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2007 Mazda MX-5 Miata Sport</td>
+            <td><strong>$6,625</strong></td>
+            <td>149,715 mi</td>
+            <td>Hutto, TX</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/b27c6f29-e032-40f3-aa0c-7777e7de029a/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>2006 Mazda MX-5 Miata Grand Touring</td>
+            <td><strong>$9,900</strong></td>
+            <td>88,443 mi</td>
+            <td>Local area</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/shopping/mazda-mx_5_miata/price-under-10000/?zip=77001&radius=500" target="_blank" rel="noopener">View Listings</a></td>
+          </tr>
+          <tr>
+            <td>2008 Mazda MX-5 Miata Grand Touring</td>
+            <td><strong>$8,995</strong></td>
+            <td>134,508 mi</td>
+            <td>McDonough, GA</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/ba06d37d-af16-4daa-b2af-0e517a47a43f/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+          <tr>
+            <td>1999 Mazda MX-5 Miata Base</td>
+            <td><strong>$8,999</strong></td>
+            <td>91,254 mi</td>
+            <td>Lawrenceville, GA</td>
+            <td>Cars.com</td>
+            <td><a href="https://www.cars.com/vehicledetail/a962ce05-7f90-4a4c-8369-643052a97cd2/" target="_blank" rel="noopener">View</a></td>
+          </tr>
+        </tbody>
+      </table>
       </div>
 
       <h3 style="color:#ffe08a;margin-top:2.5rem;">Price Comparison</h3>
@@ -776,9 +865,9 @@
       new Chart(document.getElementById('priceChart').getContext('2d'), {
         type: 'bar',
         data: {
-          labels: ['2010 Ferrari','2013 Ferrari','2016 Ferrari','2017 Ferrari','2018 Ferrari','2010 Lotus','2017 Lotus','1994 Lotus','2020 Lotus','2025 Lotus','2013 McLaren','2012 McLaren','2014 McLaren','2007 Miata','2006 Miata','2008 Miata','1999 Miata'],
+          labels: ['2010 Ferrari','2013 Ferrari','2016 Ferrari','2017 Ferrari','2018 Ferrari','2010 Lotus','2017 Lotus','1994 Lotus','2020 Lotus','2020 Lotus','2025 Lotus','2013 McLaren','2012 McLaren','2014 McLaren','2016 McLaren','2017 McLaren','2017 McLaren','2007 Miata','2006 Miata','2008 Miata','1999 Miata'],
           datasets: [
-            { label: 'Listed Price', data: [101910,104224,99125,121499,149900,51995,72900,89000,86991,99220,88999,97700,99999,6625,9900,8995,8999], backgroundColor: '#66fcf1' }
+            { label: 'Listed Price', data: [101910,104224,99125,121499,149900,51995,72900,89000,86991,89023,99220,88999,97700,99999,130223,134158,129991,6625,9900,8995,8999], backgroundColor: '#66fcf1' }
           ]
         },
         options: {
